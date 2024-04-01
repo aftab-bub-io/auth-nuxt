@@ -3,12 +3,11 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxtjs/supabase", "@formkit/nuxt", '@nuxtjs/tailwindcss'],
   formkit: {
-    // Experimental support for auto loading (see note):
     autoImport: true,
   },
   supabase: {
     redirectOptions: {
-      login: "/signup",
+      login: "/",
       callback: "/confirm",
     },
   },

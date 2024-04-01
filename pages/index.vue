@@ -1,11 +1,11 @@
 <script setup>
 const user = useSupabaseUser()
-const { auth } = useSupabaseClient()
-const runtimeConfig = useRuntimeConfig()
+// const { auth } = useSupabaseClient()
+// const runtimeConfig = useRuntimeConfig()
 
-console.log('auth', auth)
+// console.log('auth', auth)
 console.log('user', user)
-console.log('runtimeConfig', runtimeConfig.app.baseURL)
+// console.log('runtimeConfig', runtimeConfig.app.baseURL)
 
 </script>
 

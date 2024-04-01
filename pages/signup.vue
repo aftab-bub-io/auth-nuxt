@@ -1,21 +1,21 @@
 <script setup>
 import { ref } from 'vue'
-const supabase = useSupabaseClient()
+// const supabase = useSupabaseClient()
 
 
 const submitted = ref(false)
 const submitHandler = async (formData) => {
-  const { data, error } = await supabase.auth.signUp({
-    name: formData.name,
-    email: formData.email,
-    password: formData.password,
-    options: {
-      data: {
-        first_name: formData.name,
-      }
-    }
-  })
-  console.log(data);
+  // const { data, error } = await supabase.auth.signUp({
+  //   name: formData.name,
+  //   email: formData.email,
+  //   password: formData.password,
+  //   options: {
+  //     data: {
+  //       first_name: formData.name,
+  //     }
+  //   }
+  // })
+  console.log(formData);
 }
 
 
@@ -26,7 +26,7 @@ const handleIconClick = (node, e) => {
 </script>
 
 <template>
-  <div class="w-80 m-auto h-screen flex items-center justify-center">
+  <div class="w-80 m-auto h-screen flex flex-col items-center justify-center">
     <FormKit type="form" id="registration-example" :form-class="submitted ? 'hide' : 'show'" submit-label="Register"
       @submit="submitHandler" :actions="false" #default="{ value }">
       <h1 class="text-2xl font-bold mb-2 text-center uppercase text-slate-800">Sign Up</h1>
@@ -51,6 +51,9 @@ const handleIconClick = (node, e) => {
     <div v-if="submitted">
       <h2 class="text-xl text-green-500">Submission successful!</h2>
     </div>
+    <p>
+      <!-- <NuxtLink to="/login">Login</NuxtLink> -->
+    </p>
   </div>
 </template>
 
