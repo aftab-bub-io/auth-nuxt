@@ -1,21 +1,19 @@
 <script setup>
 import { ref } from 'vue'
-// const supabase = useSupabaseClient()
+const supabase = useSupabaseClient()
+const user = useSupabaseUser()
 
+definePageMeta({
+  middleware: 'auth'
+})
 
 const submitted = ref(false)
 const submitHandler = async (formData) => {
-  // const { data, error } = await supabase.auth.signUp({
-  //   name: formData.name,
-  //   email: formData.email,
-  //   password: formData.password,
-  //   options: {
-  //     data: {
-  //       first_name: formData.name,
-  //     }
-  //   }
-  // })
-  console.log(formData);
+  const { data, error } = await supabase.auth.signUp({
+    email: formData.email,
+    password: formData.password,
+  })
+  console.log(data)
 }
 
 
@@ -48,11 +46,8 @@ const handleIconClick = (node, e) => {
       <FormKit type="submit" label="Register" :classes="{ outer: { 'my-button': true }, input: { $reset: true } }" />
       <!-- <pre wrap>{{ value }}</pre> -->
     </FormKit>
-    <div v-if="submitted">
-      <h2 class="text-xl text-green-500">Submission successful!</h2>
-    </div>
     <p>
-      <!-- <NuxtLink to="/login">Login</NuxtLink> -->
+      <NuxtLink to="/login">Login</NuxtLink>
     </p>
   </div>
 </template>

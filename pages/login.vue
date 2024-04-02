@@ -1,11 +1,17 @@
 <script setup>
 import { ref } from 'vue'
-// const supabase = useSupabaseClient()
+const supabase = useSupabaseClient()
 
+definePageMeta({
+    middleware: 'auth'
+})
 
 const submitted = ref(false)
 const submitHandler = async (formData) => {
-    console.log(formData);
+    const { data, error } = await supabase.auth.signInWithPassword({
+        email: formData.email,
+        password: formData.password,
+    })
 }
 
 
@@ -13,6 +19,13 @@ const handleIconClick = (node, e) => {
     node.props.suffixIcon = node.props.suffixIcon === 'eye' ? 'eyeClosed' : 'eye'
     node.props.type = node.props.type === 'password' ? 'text' : 'password'
 }
+
+async function signInWithGithub() {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'github',
+  })
+}
+
 </script>
 
 <template>
@@ -30,16 +43,13 @@ const handleIconClick = (node, e) => {
                     @suffix-icon-click="handleIconClick" suffix-icon-class="hover:text-blue-500" />
             </div>
 
-            <FormKit type="submit" label="Register"
-                :classes="{ outer: { 'my-button': true }, input: { $reset: true } }" />
+            <FormKit type="submit" label="Login" :classes="{ outer: { 'my-button': true }, input: { $reset: true } }" />
             <!-- <pre wrap>{{ value }}</pre> -->
         </FormKit>
-        <div v-if="submitted">
-            <h2 class="text-xl text-green-500">Submission successful!</h2>
-        </div>
         <p>
             <NuxtLink to="/signup">Signup</NuxtLink>
         </p>
+        <button @click="signInWithGithub" class="my-button">Github</button>
     </div>
 </template>
 
