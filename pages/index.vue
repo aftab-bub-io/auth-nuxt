@@ -7,9 +7,6 @@ const supabase = useSupabaseClient()
 definePageMeta({
     middleware: 'auth'
 })
-// console.log('auth', auth)
-console.log('user', user)
-// console.log('runtimeConfig', runtimeConfig.app.baseURL)
 async function signOut() {
     const { error } = await supabase.auth.signOut()
     if (!error) {

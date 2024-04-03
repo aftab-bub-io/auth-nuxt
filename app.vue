@@ -1,9 +1,13 @@
 <script setup>
 const user = useSupabaseUser()
+const loading = ref(true)
 
 onMounted(() => {
   watchEffect(async () => {
-    console.log("watcheffect user", user.value);
+    loading.value = true
+    setTimeout(() => {
+      loading.value = false
+    }, 500);
     if (user.value) {
       // Redirect to the home page if the user is authenticated
       navigateTo("/")
@@ -12,13 +16,18 @@ onMounted(() => {
         navigateTo("/login")
       }
     }
+    loading.value = false
   })
 })
 
 </script>
 
 <template>
-  <div>
+  <NuxtLoadingIndicator />
+  <div v-if="loading">
+    loading...................
+  </div>
+  <div v-else>
     <NuxtPage />
   </div>
 </template>

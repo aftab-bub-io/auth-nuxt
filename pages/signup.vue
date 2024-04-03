@@ -13,7 +13,6 @@ const submitHandler = async (formData) => {
     email: formData.email,
     password: formData.password,
   })
-  console.log(data)
 }
 
 
@@ -42,13 +41,11 @@ const handleIconClick = (node, e) => {
           validation="required|confirm" help="Confirm your password" prefix-icon="password" suffix-icon="eyeClosed"
           @suffix-icon-click="handleIconClick" suffix-icon-class="hover:text-blue-500" />
       </div>
-
       <FormKit type="submit" label="Register" :classes="{ outer: { 'my-button': true }, input: { $reset: true } }" />
       <!-- <pre wrap>{{ value }}</pre> -->
     </FormKit>
-    <p>
-      <NuxtLink to="/login">Login</NuxtLink>
-    </p>
+      <p class="text-slate-600 font-semibold">Already a user? <NuxtLink to="/login" class="text-red-600 font-semibold">Login</NuxtLink>
+      </p>
   </div>
 </template>
 

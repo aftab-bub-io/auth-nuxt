@@ -21,9 +21,15 @@ const handleIconClick = (node, e) => {
 }
 
 async function signInWithGithub() {
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: 'github',
-  })
+    const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: 'github',
+    })
+}
+
+async function signInWithGoogle() {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+    })
 }
 
 </script>
@@ -46,10 +52,13 @@ async function signInWithGithub() {
             <FormKit type="submit" label="Login" :classes="{ outer: { 'my-button': true }, input: { $reset: true } }" />
             <!-- <pre wrap>{{ value }}</pre> -->
         </FormKit>
-        <p>
-            <NuxtLink to="/signup">Signup</NuxtLink>
+        <p class="text-slate-600 font-semibold">Not a member? <NuxtLink to="/signup" class="text-red-600 font-semibold">
+                Signup</NuxtLink>
         </p>
-        <button @click="signInWithGithub" class="my-button">Github</button>
+        <div class="flex w-full justify-around mt-2">
+            <button @click="signInWithGithub" class="my-button">Github</button>
+            <button @click="signInWithGoogle" class="my-button">Google</button>
+        </div>
     </div>
 </template>
 
@@ -58,7 +67,7 @@ async function signInWithGithub() {
     background-color: rgb(47, 75, 167);
     border-radius: 5px;
     text-align: center;
-    padding: 5px;
+    padding: 0.2rem 1rem !important;
     color: white;
     font-weight: bold;
     cursor: pointer;
