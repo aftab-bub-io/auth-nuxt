@@ -32,6 +32,13 @@ async function signInWithGoogle() {
     })
 }
 
+async function signInWithLinkedIn() {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'linkedin_oidc',
+  })
+}
+
+
 </script>
 
 <template>
@@ -58,6 +65,7 @@ async function signInWithGoogle() {
         <div class="flex w-full justify-around mt-2">
             <button @click="signInWithGithub" class="my-button">Github</button>
             <button @click="signInWithGoogle" class="my-button">Google</button>
+            <button @click="signInWithLinkedIn" class="my-button">LinkedIn</button>
         </div>
     </div>
 </template>
