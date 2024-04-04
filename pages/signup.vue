@@ -33,8 +33,7 @@ const handleIconClick = (node, e) => {
         help="What email should we use?" validation="required|email" />
       <div class="double">
         <FormKit type="password" name="password" label="Password" validation="required|length:6|matches:/[^a-zA-Z0-9\s!@#$%/
-"
-          :validation-messages="{
+" :validation-messages="{
       matches: 'Please include at least one symbol',
     }" placeholder="Your password" help="Choose a password" prefix-icon="password" suffix-icon="eyeClosed"
           @suffix-icon-click="handleIconClick" suffix-icon-class="hover:text-blue-500" />
@@ -45,8 +44,9 @@ const handleIconClick = (node, e) => {
       <FormKit type="submit" label="Register" :classes="{ outer: { 'my-button': true }, input: { $reset: true } }" />
       <!-- <pre wrap>{{ value }}</pre> -->
     </FormKit>
-      <p class="text-slate-600 font-semibold">Already a user? <NuxtLink to="/login" class="text-red-600 font-semibold">Login</NuxtLink>
-      </p>
+    <p class="text-slate-600 p-2 font-semibold">Already a user? <NuxtLink to="/login"
+        class="text-red-600 font-semibold">Login</NuxtLink>
+    </p>
   </div>
 </template>
 
@@ -55,9 +55,16 @@ const handleIconClick = (node, e) => {
   background-color: rgb(47, 75, 167);
   border-radius: 5px;
   text-align: center;
-  padding: 5px;
+  padding: 0.2rem 1rem !important;
   color: white;
   font-weight: bold;
   cursor: pointer;
+  width: 120px;
+  height: 30px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
 }
 </style>

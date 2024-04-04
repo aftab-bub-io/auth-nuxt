@@ -33,10 +33,23 @@ async function signInWithGoogle() {
 }
 
 async function signInWithLinkedIn() {
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: 'linkedin_oidc',
-  })
+    const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: 'linkedin_oidc',
+    })
 }
+
+async function signInWithEmail() {
+    const { data, error } = await supabase.auth.signInWithOtp({
+        email: 'example@email.com',
+        options: {
+            // set this to false if you do not want the user to be automatically signed up
+            shouldCreateUser: false,
+            emailRedirectTo: 'https://example.com/welcome',
+        },
+    })
+    console.log('data', data, error)
+}
+
 
 
 </script>
@@ -59,10 +72,11 @@ async function signInWithLinkedIn() {
             <FormKit type="submit" label="Login" :classes="{ outer: { 'my-button': true }, input: { $reset: true } }" />
             <!-- <pre wrap>{{ value }}</pre> -->
         </FormKit>
-        <p class="text-slate-600 font-semibold">Not a member? <NuxtLink to="/signup" class="text-red-600 font-semibold">
+        <p class="text-slate-600 p-2 font-semibold">Not a member? <NuxtLink to="/signup" class="text-red-600 font-semibold">
                 Signup</NuxtLink>
         </p>
-        <div class="flex w-full justify-around mt-2">
+        <div class="flex flex-wrap justify-around mt-2 gap-2">
+            <button @click="signInWithEmail" class="my-button">Magic Link</button>
             <button @click="signInWithGithub" class="my-button">Github</button>
             <button @click="signInWithGoogle" class="my-button">Google</button>
             <button @click="signInWithLinkedIn" class="my-button">LinkedIn</button>
@@ -79,5 +93,12 @@ async function signInWithLinkedIn() {
     color: white;
     font-weight: bold;
     cursor: pointer;
+    width: 120px;
+    height: 30px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
 }
 </style>
