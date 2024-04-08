@@ -5,7 +5,8 @@ const supabase = useSupabaseClient()
 // const runtimeConfig = useRuntimeConfig()
 
 definePageMeta({
-  middleware: 'auth'
+  middleware: 'auth',
+  // layout: 'default'
 })
 async function signOut() {
   const { error } = await supabase.auth.signOut()
@@ -20,14 +21,14 @@ async function signOut() {
 </script>
 
 <template>
-  <header class="flex justify-evenly p-4 items-center border-b-2   m-auto">
+  <!-- <header class="flex justify-evenly p-4 items-center border-b-2   m-auto">
     <div>AUTHER</div>
     <div>
       <button class="my-btn border-2" @click="signOut">Sign out</button>
     </div>
-  </header>
+  </header> -->
   <div>
-    <h1 class="text-center mt-4">Home</h1>
+    <h1 class="text-2xl text-center p-4">Home</h1>
   </div>
 </template>
 

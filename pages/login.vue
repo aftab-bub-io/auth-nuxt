@@ -12,6 +12,9 @@ const submitHandler = async (formData) => {
         email: formData.email,
         password: formData.password,
     })
+    if(data.user !== null){
+        navigateTo("/")
+    }
 }
 
 
@@ -47,7 +50,6 @@ async function signInWithEmail() {
             emailRedirectTo: 'https://example.com/welcome',
         },
     })
-    console.log('data', data, error)
 }
 
 
