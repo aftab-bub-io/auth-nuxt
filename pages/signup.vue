@@ -32,7 +32,7 @@ const handleIconClick = (node, e) => {
       <FormKit type="text" name="email" label="Your email" placeholder="jane@example.com"
         help="What email should we use?" validation="required|email" />
       <div class="double">
-        <FormKit type="password" name="password" label="Password" validation="required|length:6|matches:/[^a-zA-Z0-9\s!@#$%/
+        <FormKit type="password" name="password" label="Password" validation="required|length:6|matches:/[^a-zA-Z]/
 " :validation-messages="{
       matches: 'Please include at least one symbol',
     }" placeholder="Your password" help="Choose a password" prefix-icon="password" suffix-icon="eyeClosed"

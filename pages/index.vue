@@ -20,8 +20,8 @@ async function signOut() {
 </script>
 
 <template>
-  <header class="flex justify-evenly p-4 items-center border-b-2 m-auto">
-    <div>Auther</div>
+  <header class="flex justify-evenly p-4 items-center border-b-2   m-auto">
+    <div>AUTHER</div>
     <div>
       <button class="my-btn border-2" @click="signOut">Sign out</button>
     </div>
