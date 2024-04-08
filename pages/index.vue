@@ -6,7 +6,7 @@ const supabase = useSupabaseClient()
 
 definePageMeta({
   middleware: 'auth',
-  // layout: 'default'
+  layout: 'custom'
 })
 async function signOut() {
   const { error } = await supabase.auth.signOut()
